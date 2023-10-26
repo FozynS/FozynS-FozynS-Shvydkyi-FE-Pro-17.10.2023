@@ -50,16 +50,18 @@
 // alert(`${changeHoursInSecond} seconds`);
 
 //** HW 6 */
-const numberOne = +prompt('Write your first number');
-const numberTwo = +prompt('Write your second number');
-const numberThree = +prompt('Write your third number');
-const allNumbers = 3
+// const numberOne = +prompt('Write your first number');
+// const numberTwo = +prompt('Write your second number');
+// const numberThree = +prompt('Write your third number');
+// const allNumbers = 3
 
-const sum = (numberOne + numberTwo + numberThree) / allNumbers;
-alert(sum.toFixed(2));
+// const sum = (numberOne + numberTwo + numberThree) / allNumbers;
+// alert(sum.toFixed(2));
 
 //** HW 7 */
-const usersBirthYear = prompt('Напиши свій рік народження?');
+const usersBirthYear = +prompt('Напиши свій рік народження?');
+const usersLiveInCity = prompt('У якому місті ті живешь?');
+const usersFavouriteSport = prompt('Який твій улюбленний вид спорту?');
 
 let message;
 const year = 2023;
@@ -68,57 +70,53 @@ const usersAge = year - usersBirthYear;
 if(usersBirthYear === undefined) {
     alert("Шкода, що ви не захотіли вводити свій рік народження.");
 } else {
-    const usersLiveInCity = prompt('У якому місті ті живешь?');
+    message = `${usersAge} роки\n`;
+}
 
-    if(usersLiveInCity === undefined) {
-        alert("Шкода, що ви не захотіли вводити свое.");
-    } else {
-        const usersFavouriteSport = prompt('Який твій улюбленний вид спорту?');
+if(usersLiveInCity === undefined) {
+    alert("Шкода, що ви не захотіли вводити свое.");
+} else if(usersLiveInCity === 'Київ' || usersLiveInCity === 'Вашингтон' || usersLiveInCity === 'Лондон') {
+    message += `Ти живеш у столиці ${usersLiveInCity}`;
+} else {
+    message += `Ти живеш у місті ${usersLiveInCity}`; 
+    
+}
 
-        if(usersFavouriteSport === undefined) {
-            alert("Шкода, що ви не захотіли вводити свій улюблений вид спорту.");
-        } else {
-            message = `${usersAge} роки\n`;
-
-            if(usersLiveInCity === 'Київ' || usersLiveInCity === 'Вашингтон' || usersLiveInCity === 'Лондон') {
-                message += `Ти живеш у столиці ${usersLiveInCity}`;
-            } else {
-                message += `Ти живеш у місті ${usersLiveInCity}`;
-            }
-                switch(usersFavouriteSport) {
-                    case 'Футбол':
-                        message += `\nКруто! Хочеш стати Кріштіану Роналду?`;
-                        break;
-                    case 'Бокс':
-                        message += `\nКруто! Хочеш стати Майком Тайсоном?`;
-                        break;
-                    case 'Баскетбол':
-                        message += `\nКруто! Хочеш стати Леброном Джеймсом?`;
-                        break;
-                    default: 
-                        message += `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
-                        break;
-                }
-        }
+if(usersFavouriteSport === undefined) {
+    alert("Шкода, що ви не захотіли вводити свій улюблений вид спорту.");
+} else {
+    switch(usersFavouriteSport) {
+        case 'Футбол':
+            message += `\nКруто! Хочеш стати Кріштіану Роналду?`;
+            break;
+        case 'Бокс':
+            message += `\nКруто! Хочеш стати Майком Тайсоном?`;
+            break;
+        case 'Баскетбол':
+            message += `\nКруто! Хочеш стати Леброном Джеймсом?`;
+            break;
+        default: 
+            message += `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
+            break;
     }
-} 
+}
 
 alert(message);
 
 //** HW 8 */
-let numOrStr = prompt('input number or string');
-console.log(numOrStr);
+// let numOrStr = prompt('input number or string');
+// console.log(numOrStr);
 
-switch(numOrStr && numOrStr.trim()) {
-    case null:
-        console.log('ви скасували');
-        break
-    case '':
-        console.log('Empty String');
-        break;
-    case 'NaN':
-        console.log(' number is Ba_NaN');
-        break;
-    default: 
-        console.log('OK!');
-}
+// switch(true) {
+//     case numOrStr === null:
+//         console.log('ви скасували');
+//         break
+//     case numOrStr.trim() === '':
+//         console.log('Empty String');
+//         break;
+//     case isNaN( +numOrStr ):
+//         console.log(' number is Ba_NaN');
+//         break;
+//     default: 
+//         console.log('OK!');
+// }
