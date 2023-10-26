@@ -64,6 +64,8 @@
 
 //** HW 7 */
 const usersBirthYear = +prompt('Напиши свій рік народження?');
+const usersLiveInCity = prompt('У якому місті ті живешь?');
+const usersFavouriteSport = prompt('Який твій улюбленний вид спорту?');
 
 let message;
 const year = 2023;
@@ -72,38 +74,30 @@ const sorry = 'Шкода, що ви не захотіли вводити';
 
 if(usersBirthYear === undefined || usersBirthYear === '') {
     alert(`${sorry} свій рік народження.`);
+} else if(usersLiveInCity === undefined || usersLiveInCity.trim() === '') {
+    alert(`${sorry} свое місто.`);
+} else if(usersFavouriteSport === undefined || usersFavouriteSport.trim() === '') {
+    alert(`${sorry} свій улюблений вид спорту.`);
 } else {
-    const usersLiveInCity = prompt('У якому місті ті живешь?');
+    message = `${usersAge} роки\n`;
 
-    if(usersLiveInCity === undefined || usersLiveInCity.trim() === '') {
-        alert(`${sorry} свое місто.`);
-    } else {
-        const usersFavouriteSport = prompt('Який твій улюбленний вид спорту?');
+    const cities = ['Київ','Вашингтон','Лондон'].includes(usersLiveInCity)
+        ? `Ти живеш у столиці ${usersLiveInCity}`
+        : `Ти живеш у місті ${usersLiveInCity}`;
 
-        if(usersFavouriteSport === undefined || usersFavouriteSport === '') {
-            alert(`${sorry} свій улюблений вид спорту.`);
-        } else {
-            message = `${usersAge} роки\n`;
+        message += cities;
 
-            if(['Київ','Вашингтон','Лондон'].includes(usersLiveInCity)) {
-                message += `Ти живеш у столиці ${usersLiveInCity}`;
-            } else {
-                message += `Ти живеш у місті ${usersLiveInCity}`;
-            }
-            const champions = {
-                'Футбол': 'Кріштіану Роналду',
-                'Бокс': 'Майком Тайсоном',
-                'Баскетбол': 'Леброном Джеймсом',
-            };
+    const champions = {
+        'Футбол': 'Кріштіану Роналду',
+        'Бокс': 'Майком Тайсоном',
+        'Баскетбол': 'Леброном Джеймсом',
+    };
 
-            const champion = champions[usersFavouriteSport];
-            if(champion) {
-                message += `\nКруто! Хочеш стати ${champion}?`
-            } else {
-                message += `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
-            }
-        }
-    }
-} 
+    const champion = champions[usersFavouriteSport];
+
+        message += champion
+            ? `\nКруто! Хочеш стати ${champion}?`
+            : `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
+}
 
 alert(message);
