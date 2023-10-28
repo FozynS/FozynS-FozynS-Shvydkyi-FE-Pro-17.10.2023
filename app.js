@@ -229,13 +229,12 @@ let isSimple = true;
 for (let i = 2; i <= simpleNumber - 1; i++) {
     if(simpleNumber % i === 0) {
         isSimple = false;
+        console.log(`${simpleNumber} не простое число`);
+        break;
+    } else {
+        console.log(`${simpleNumber} простое число`);
         break;
     }
-}
-if(isSimple) {
-    console.log(`${simpleNumber} простое число`);
-} else {
-    console.log(`${simpleNumber} не простое число`);
 }
 
 //** Task 5 */
