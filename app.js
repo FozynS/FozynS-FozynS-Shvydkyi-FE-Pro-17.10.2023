@@ -59,48 +59,42 @@
 // alert(+sum.toFixed(2));
 
 //** HW 7 */
-let message;
-
 const usersBirthYear = +prompt('Напиши свій рік народження?');
 const usersLiveInCity = prompt('У якому місті ті живешь?');
 const usersFavouriteSport = prompt('Який твій улюбленний вид спорту?');
+
+let message;
 const year = 2023;
 const usersAge = year - usersBirthYear;
+const sorry = 'Шкода, що ви не захотіли вводити';
 
-if(usersBirthYear === undefined) {
-    alert("Шкода, що ви не захотіли вводити свій рік народження.");
+if(usersBirthYear === undefined || usersBirthYear === '') {
+    alert(`${sorry} свій рік народження.`);
+} else if(usersLiveInCity === undefined || usersLiveInCity.trim() === '') {
+    alert(`${sorry} свое місто.`);
+} else if(usersFavouriteSport === undefined || usersFavouriteSport.trim() === '') {
+    alert(`${sorry} свій улюблений вид спорту.`);
 } else {
     message = `${usersAge} роки\n`;
-}
 
-if(usersLiveInCity === undefined) {
-    alert("Шкода, що ви не захотіли вводити свое.");
-} else if(usersLiveInCity === 'Київ' || usersLiveInCity === 'Вашингтон' || usersLiveInCity === 'Лондон') {
-    message += `Ти живеш у столиці ${usersLiveInCity}`;
-} else {
-    message += `Ти живеш у місті ${usersLiveInCity}`; 
-    
-}
+    const cities = ['Київ','Вашингтон','Лондон'].includes(usersLiveInCity)
+        ? `Ти живеш у столиці ${usersLiveInCity}`
+        : `Ти живеш у місті ${usersLiveInCity}`;
 
-if(usersFavouriteSport === undefined) {
-    alert("Шкода, що ви не захотіли вводити свій улюблений вид спорту.");
-} else {
-    switch(usersFavouriteSport) {
-        case 'Футбол':
-            message += `\nКруто! Хочеш стати Кріштіану Роналду?`;
-            break;
-        case 'Бокс':
-            message += `\nКруто! Хочеш стати Майком Тайсоном?`;
-            break;
-        case 'Баскетбол':
-            message += `\nКруто! Хочеш стати Леброном Джеймсом?`;
-            break;
-        default: 
-            message += `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
-            break;
-    }
-}
+        message += cities;
 
+    const champions = {
+        'Футбол': 'Кріштіану Роналду',
+        'Бокс': 'Майком Тайсоном',
+        'Баскетбол': 'Леброном Джеймсом',
+    };
+
+    const champion = champions[usersFavouriteSport];
+
+        message += champion
+            ? `\nКруто! Хочеш стати ${champion}?`
+            : `\nТвій улюбленний вид спорту ${usersFavouriteSport}`;
+}
 alert(message);
 
 //** HW 8 */
