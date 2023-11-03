@@ -51,46 +51,46 @@ console.log(`Количество отрицательных элементов 
 //** Task 5 */
 //Знайти кількість непарних позитивних елементів.
 
-let UnpairedPositiveNumbers = array.filter((item) => item > 0 && item % 2 !== 0);
+let unpairedPositiveNumbers = array.filter((item) => item > 0 && item % 2 !== 0);
 // for(const item of array) {
 //     if(item > 0 && item % 2 !== 0) {
 //         UnpairedPositiveNumbers.push(item);
 //     }
 // }
-console.log(`Количество непарных положительных элементов - ${UnpairedPositiveNumbers.length}`);
+console.log(`Количество непарных положительных элементов - ${unpairedPositiveNumbers.length}`);
 
 //** Task 6 */
 //Знайти кількість парних позитивних елементів.
 
-let PairPositiveNumbers = array.filter((item) => item > 0 && item % 2 === 0);
+let pairPositiveNumbers = array.filter((item) => item > 0 && item % 2 === 0);
 // for(const item of array) {
 //     if(item > 0 && item % 2 === 0) {
 //         PairPositiveNumbers.push(item);
 //     }
 // }
-console.log(`Количество парных положительных элементов - ${PairPositiveNumbers.length}`);
+console.log(`Количество парных положительных элементов - ${pairPositiveNumbers.length}`);
 
 //** Task 7 */
 //Знайти суму парних позитивних елементів.
 
-let SumPairPositiveNumbers = array.filter((item) => item > 0 && item % 2 === 0).reduce((total, value) => total + value);
+let sumPairPositiveNumbers = array.filter((item) => item > 0 && item % 2 === 0).reduce((total, value) => total + value);
 // for(const item of array) {
 //     if(item > 0 && item % 2 === 0) {
 //         SumPairPositiveNumbers += item;
 //     }
 // }
-console.log(`Сумма парных положительных элементов - ${SumPairPositiveNumbers}`);
+console.log(`Сумма парных положительных элементов - ${sumPairPositiveNumbers}`);
 
 //** Task 8 */
 //Знайти суму непарних позитивних елементів.
 
-let SumUnpairedPositiveNumbers = array.filter((item) => item > 0 && item % 2 !== 0).reduce((total, value) => total + value);
+let sumUnpairedPositiveNumbers = array.filter((item) => item > 0 && item % 2 !== 0).reduce((total, value) => total + value);
 // for(const item of array) {
 //     if(item > 0 && item % 2 !== 0) {
 //         SumUnpairedPositiveNumbers += item;
 //     }
 // }
-console.log(`Сумма непарных положительных элементов - ${SumUnpairedPositiveNumbers}`);
+console.log(`Сумма непарных положительных элементов - ${sumUnpairedPositiveNumbers}`);
 
 //** Task 9 */
 //Знайти добуток позитивних елементів.
@@ -101,12 +101,17 @@ console.log(`Сумма непарных положительных элемен
 //         PositiveNumbers.push(item);
 //     }
 // }
-const ProductPositiveNumbers = array.filter((item) => item > 0).reduce((total, value) => total * value);
+const productPositiveNumbers = array.filter((item) => item > 0).reduce((total, value) => total * value);
 // const ProductPositiveNumbers = PositiveNumbers.reduce((total, value) => total * value);
-console.log(`Произведение пожоложительных элементов - ${ProductPositiveNumbers}`);
+console.log(`Произведение пожоложительных элементов - ${productPositiveNumbers}`);
 
 //** Task 10 */
 //Знайти найбільший серед елементів масиву, остальні обнулити.
 
-const MaxNumber = Math.max(...array);
-console.log(MaxNumber);
+const largestNumber = Math.max(...array);
+for(let i = 0; i < array.length; i++) {
+    if(array[i] !== largestNumber) {
+        array[i] = 0;
+    }
+}
+console.log(largestNumber);
