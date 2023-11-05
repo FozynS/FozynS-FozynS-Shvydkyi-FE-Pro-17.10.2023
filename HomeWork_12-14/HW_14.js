@@ -1,9 +1,8 @@
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
 const generateKey = function(length, characters) {
-    let randomIndex;
     let result = '';
-    for(let i = 0; i < length; i++) {
+    for(let i = 0, randomIndex; i < length; i++) {
         randomIndex =  Math.random() * characters.length;
         result += characters.charAt(randomIndex);
     }
