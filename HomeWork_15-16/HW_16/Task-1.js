@@ -24,11 +24,12 @@ const someArray = [1, 2, '23', 'sadas', 12, '100', 'sadsad', 'asf', '+', 10, 20,
 // console.log(arithmeticAverage(numbers));
 
 
-const numbers = someArray.filter(item => typeof(item) === 'number');
+const numbers = someArray.filter(item => typeof(item) === 'number' && !isNaN(item));
 console.log(numbers);
 
 const arithmeticAverage = (elements) => {
-    const result = elements.reduce((a, b) => a + b, 0);
-    return result;
+    const sum = elements.reduce((a, b) => a + b, 0);
+    const average = sum / elements.length
+    return average;
 }
 console.log(arithmeticAverage(numbers));
