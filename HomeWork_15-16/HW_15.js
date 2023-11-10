@@ -75,3 +75,14 @@ const sumAllBalances = users.reduce((sum, user) => {
     return sum + balances;
 }, 0);
 console.log(`Загальна сума балансів користувачів: $${sumAllBalances.toFixed(2)}`);
+
+//** Здесь использовал регулярные выражения*/
+// const usersWithHighBalance = users.filter((user) => {
+//     const balances = parseInt(user.balance.replace(/\$|,/g, ''));
+//     return balances > 2000
+// });
+
+// const sumAllBalances = users.reduce((sum, user) => {
+//     const balances = parseFloat(user.balance.replace(/\$|,/g, ''));
+//     return sum + balances;
+// }, 0);
