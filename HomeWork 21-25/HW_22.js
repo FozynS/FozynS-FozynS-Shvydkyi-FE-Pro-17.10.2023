@@ -31,8 +31,10 @@ const nikita = new Human('Nikita', 17);
     власник.
 Методи:
 конструктор, який приймає чотитри параметри (тобто, всі окрім власника): марка, модель, рік виписку, номерний знак 
-присвоїти власника - метод повинен приймати екземпляр класу Людина, та зберігати екземпляр класу Людина у відповідному полі, якщо вік більше 18, інакше виводити у консоль відповідне повідомлення
-метод, який виводить у консоль інформацію про автомобіль та викликає метод виводу інформації класу Людина для виведення інформації про власника
+присвоїти власника - метод повинен приймати екземпляр класу Людина, та зберігати екземпляр класу Людина у відповідному полі, 
+    якщо вік більше 18, інакше виводити у консоль відповідне повідомлення
+метод, який виводить у консоль інформацію про автомобіль та викликає метод виводу інформації класу Людина для виведення 
+    інформації про власника
 В якості демонстраціїї створити:
 декілька екземплярів класу Людина;
 декілька екземплярів класу Автомобіль;
@@ -45,28 +47,29 @@ class Car {
         this.model = model;
         this.year = year;
         this.plate = plate;
-        this.owner = this.owner;
+        this.owner;
     }
 
     addOwner(instance) {
         if(instance.age > 18) {
-            this.owner = instance.name;
+            this.owner = instance;
         } else {
             console.log('Sorry, you"re still young to drive');
         }
     }
 
-    showAllInformation(instance) {
+    showAllInformation() {
         console.log(this.mark, this.model, this.year, this.plate);
-        instance.showInformation();
+        this.owner.showInformation();
     }
 }
 
 const firstCar = new Car('Audi', 'Q3', 2023, 'BH1941EX');
 firstCar.addOwner(danylo);
-firstCar.showAllInformation(danylo);
+firstCar.showAllInformation();
 // console.log(firstCar);
+
 const secondCar = new Car('Porshe', 'Macan', 2021, 'BH7879AM');
 secondCar.addOwner(nikita);
-secondCar.showAllInformation(nikita);
+secondCar.showAllInformation();
 // console.log(secondCar);

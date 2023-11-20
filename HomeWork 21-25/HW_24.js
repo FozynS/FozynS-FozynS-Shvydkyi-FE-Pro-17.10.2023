@@ -16,8 +16,8 @@ class Hamburger{
         this.size = size;
         this.stuffing = stuffing;
         this.toppings = [];
-        this.price = size.price + stuffing.price;
-        this.calories = size.calories + stuffing.calories;
+        this.price = 0;
+        this.calories = 0;
     }
     static SIZE_SMALL = {price: 50, calories: 20};
     static SIZE_BIG = {price: 100, calories: 40};
@@ -30,17 +30,22 @@ class Hamburger{
     static TOPPING_MAYO = {price: 20, calories: 5};
 
     addTopping(topping) {
-        this.toppings.push(topping); 
-        this.price += topping.price;
-        this.calories += topping.calories;
+        if(topping === Hamburger.TOPPING_SAUCE || topping === Hamburger.TOPPING_MAYO) {
+            this.toppings.push(topping); 
+            this.price += topping.price;
+            this.calories += topping.calories;
+        } else {
+            console.log('Write topping, not stuffing');
+        }
+        
     }
 
     calculateCalories() {
-        return this.calories;
+        return this.calories + this.size.calories + this.stuffing.calories;
     }
 
     calculatePrice() {
-        return this.price;
+        return this.price + this.size.price + this.stuffing.price;
     }
 }
 // маленький гамбургер з начинкою з сиру

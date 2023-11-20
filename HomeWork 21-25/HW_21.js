@@ -32,7 +32,7 @@ const katya = new Person('Katerina', 'female');
 class Apartment {
     residents = [];
     addResident(instance) {
-        this.residents.push(instance.name);
+        this.residents.push(instance);
     }
 }
 
@@ -64,7 +64,7 @@ class House {
     }
     
     addApartment(instance) {
-        if(this.maxApartments <= 0) {
+        if(this.apartments.length >= this.maxApartments) {
             console.log('Sorry we dont have any apartment');
         } else {
             this.apartments.push(instance);
@@ -89,8 +89,10 @@ class House {
 
 const firstApartment = new House(2);
 firstApartment.addApartment(firstPair);
+console.log(firstApartment)
 
 
 const secondApartment = new House(0);
 secondApartment.addApartment(secondPair);
+console.log(secondApartment);
 

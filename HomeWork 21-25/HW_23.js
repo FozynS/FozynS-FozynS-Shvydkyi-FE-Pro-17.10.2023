@@ -15,22 +15,25 @@
     методів.
 */ 
 class Student {
-    constructor(name, surname, birthday, marks) {
+    constructor(name, surname, birthyear, marks) {
         this.name = name;
         this.surname = surname;
-        this.birthday = birthday;
+        this.birthyear = birthyear;
         this.marks = marks;
         this.attendance = new Array(25).fill(null);
-        this.numberOfClasses = 0
+        // this.numberOfClasses = 0;
         // this.attendance = [];
         // this.attendance.length = 25;
     }
+
+    // attendanceCheck() {
+        
+    // }
 
     present() {
         const emptyIndex = this.attendance.indexOf(null);
         if(emptyIndex !== -1) {
             this.attendance[emptyIndex] = true;
-            this.numberOfClasses++;
         } else {
             console.log('There are no more spaces available to mark attendance.')
         }
@@ -41,17 +44,20 @@ class Student {
         const emptyIndex = this.attendance.indexOf(null);
         if(emptyIndex !== -1) {
             this.attendance[emptyIndex] = false;
-            this.numberOfClasses++;
         } else {
             console.log('There are no more spaces available to mark attendance.')
         }
         return this;
     }
 
+    numberOfClasses() {
+        return this.attendance.indexOf(null);
+    }
+
     showAge() {
         const currentData = new Date();
         const currentYear = currentData.getFullYear();
-        console.log(currentYear - this.birthday);
+        console.log(currentYear - this.birthyear);
     }
 
     averageScore() {
@@ -61,17 +67,19 @@ class Student {
     }
 
     summary() {
-        const onlyTrue = this.attendance.filter((item) => item === true);
-        const averageAttendance = (onlyTrue.length / this.numberOfClasses).toFixed(2);
+        const allTrue = this.attendance.filter((item) => item === true);
+        const averageAttendance = (allTrue.length / this.numberOfClasses()).toFixed(2);
         // const roundAverageAttendance = Math.floor(averageAttendance * 100) / 100;
-
-        console.log(parseFloat(averageAttendance));
-
+        const pointAverage = 9;
+        const validAttendance = 0.9;
         const score = this.averageScore();
 
-        if(score >= 9 && parseFloat(averageAttendance) >= 0.9) {
+        const pointComparison  = score >= pointAverage;
+        const visitComparison  = parseFloat(averageAttendance) >= validAttendance;
+
+        if(pointComparison && visitComparison) {
             console.log('Excellent');
-        } else if(score >= 9 || parseFloat(averageAttendance) >= 0.9) {
+        } else if(pointComparison || visitComparison) {
             console.log('Its good, but it could be better');
         } else {
             console.log('Very bad');
