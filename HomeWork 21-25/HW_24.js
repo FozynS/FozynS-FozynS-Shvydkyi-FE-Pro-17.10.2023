@@ -18,7 +18,7 @@ class Hamburger{
         this.toppings.push(topping); 
     }
     
-    calculateTotal(atribute, array) {
+    searchAttribute(atribute, array) {
         let total = 0;
         for(let i = 0; i < array.length; i++){
             total += array[i][atribute];
@@ -26,11 +26,11 @@ class Hamburger{
         return total;
     }
     calculateCalories() {
-        return this.calculateTotal('calories', this.toppings) + this.size.calories + this.stuffing.calories;
+        return this.searchAttribute('calories', this.toppings) + this.size.calories + this.stuffing.calories;
     }
 
     calculatePrice() {
-        return this.calculateTotal('price', this.toppings) + this.size.price + this.stuffing.price;
+        return this.searchAttribute('price', this.toppings) + this.size.price + this.stuffing.price;
     }
 }
 // маленький гамбургер з начинкою з сиру
