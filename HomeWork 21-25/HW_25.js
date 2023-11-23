@@ -2,25 +2,21 @@ class SuperMath {
     input() {
         const x = +prompt('Введите первое число', '');
         const y = +prompt('Введите второе число', '');
+        const signs = ['+', '-', '*', '/', '%'];
         let znak;
 
         do{
+            
             znak = prompt('Введите знак математической операции (+, -, *, /, %)', '');
-        } while(!this.isValidOperation(znak));
+        } while(!signs.includes(znak));
 
         return this.check({x, y, znak});
     }
 
-    isValidOperation(sign) {
-        const signs = ['+', '-', '*', '/', '%'];
-        return signs.includes(sign);
-    }
-
     check(obj) {
         const answer = confirm('Ты уверен?', '');
-        // const answer = true;
         if(!answer) {
-            return this.input();
+            this.input();
         } else {
             let result;
     
@@ -41,7 +37,6 @@ class SuperMath {
                     result = obj.x % obj.y;
                     break;
             }
-            console.log(result);
             return result;
         }
     }
@@ -51,3 +46,4 @@ class SuperMath {
 const calculate = new SuperMath();
 const obj = {x:12, y:3, znak: '/'};
 calculate.check(obj); // --> no p.input() -> 3 prompt -> рахує
+console.log(calculate.check(obj));
