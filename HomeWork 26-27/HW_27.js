@@ -26,7 +26,7 @@ const getRandomIndex = (arr) => {
 
     return randomIndex;
 }
-const randomIndex = getRandomIndex(colors);
+// const randomIndex = getRandomIndex(colors);
 
 const checkUniqColor = (index, colors, users) => {
     const newColor = colors[index];
@@ -42,13 +42,20 @@ const checkUniqColor = (index, colors, users) => {
 
     return newColor;
 }
-const uniqColor = checkUniqColor(randomIndex, colors, users);
+// const uniqColor = checkUniqColor(randomIndex, colors, users);
 
-const addUser = (name, color, arr) => {
+const addUser = (name, colors, arr) => {
+    let uniqColor = null;
+
+    do {
+        const randomIndex = getRandomIndex(colors);
+        uniqColor = checkUniqColor(randomIndex, colors, arr);
+    } while (uniqColor === null);
+
     return arr.push({
         name,
-        color,
+        color: uniqColor,
     });
 }
-const newUser = addUser('Danylo', uniqColor, users);
+const newUser = addUser('Danylo', colors, users);
 console.log(users);
