@@ -1,53 +1,54 @@
-// const b =
-// [['5','3','.','.','7','.','.','.','.']
-// ,['6','.','.','1','9','5','.','.','.']
-// ,['.','9','8','.','.','.','.','6','.']
-// ,['8','.','.','.','6','.','.','.','3']
-// ,['4','.','.','8','.','3','.','.','1']
-// ,['7','.','.','.','2','.','.','.','6']
-// ,['.','6','.','.','.','.','2','8','.']
-// ,['.','.','.','4','1','9','.','.','5']
-// ,['.','.','.','.','8','.','.','7','9']];
+const b =
+[['5','3','.','.','7','.','.','.','.']
+,['6','.','.','1','9','5','.','.','.']
+,['.','9','8','.','.','.','.','6','.']
+,['8','.','.','.','6','.','.','.','3']
+,['4','.','.','8','.','3','.','.','1']
+,['7','.','.','.','2','.','.','.','6']
+,['.','6','.','.','.','.','2','8','.']
+,['.','.','.','4','1','9','.','.','5']
+,['.','.','.','.','8','.','.','7','9']];
 
-// // FIX ME
-// const isValidSudoku = (board) => {
-//     const isRowOrColumnValid = (item) => {
-//     const numberArray = item.filter(el => el !== '.');
-//     const uniqArray = [];
+// FIX ME
+const isValidSudoku = (board) => {
+    const isRowOrColumnValid = (item) => {
+        const numberArray = item.filter(el => el !== '.');
+        const uniqArray = [];
+        
+        for (const num of numberArray) {
+            if (uniqArray.includes(num)) {
+                return false;
+            }
+            uniqArray.push(num);
+        }
+        return true;
+    }
 
-//         for (const num of numberArray) {
-//             if (uniqArray.includes(num)) {
-//                 return false;
-//             }
-//         }
+    for (const row of board) {
+        if (!isRowOrColumnValid(row)) {
+            return false;
+        }
+    }
 
-//         return true;
-//     };
+    for (let index = 0; index < board.length; index++) {
+        const column = board.map(row => {
+            return row[index];
+        });
 
-//     for (const row of board) {
-//         if (!isRowOrColumnValid(row)) {
-//             return false;
-//         }
-//     }
+        if (index === 0) {
+            console.log(column);
+        }
+        if (!isRowOrColumnValid(column)) {
+            return false;
+        }
+    }
 
-//     for (let index = 0; index < 10; index++) {
-//         const column = board.map(row => {
-//             return row[index];
-//         });
+    return true;
+};
 
-//         if (index === 0) {
-//             console.log(column);
-//         }
+const test = isValidSudoku(b);
+console.log(test);
 
-//         if (!isRowOrColumnValid(column)) {
-//             return false;
-//         }
-//     }
-
-//     return true;
-// };
-
-// console.log(isValidSudoku(b));
 
 /*
 HW OPTIONAL
