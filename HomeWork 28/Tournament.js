@@ -36,7 +36,7 @@ const weeks = [
             },
             {
                 homeTeam: {id: 3, score: 1},
-                awayTeam: {id: 4, score: 1},
+                awayTeam: {id: 4, score: 10},
             },
         ]
     }
@@ -72,29 +72,34 @@ const showStanding = () => {
         result[team.id] = {
             plus: 0,
             minus: 0,
-            points: 0
+            win: 0,
+            lose: 0,
+            tie: 0,
         }  
     }
 
     for (const {pairs} of weeks) {
         for (const {homeTeam, awayTeam} of pairs) {
-            result[homeTeam.id].plus += result[homeTeam.id].score;
-            result[awayTeam.id].plus += result[awayTeam.id].score;
+            result[homeTeam.id].plus += homeTeam.score;
+            result[awayTeam.id].plus += awayTeam.score;
 
-            result[homeTeam.id].minus += result[awayTeam.id].score;
-            result[awayTeam.id].minus += result[homeTeam.id].score;
+            result[homeTeam.id].minus += awayTeam.score;
+            result[awayTeam.id].minus += homeTeam.score;
+
             switch (true) {
                 case homeTeam.score === awayTeam.score:
-                    result[homeTeam.id].points++;
-                    result[awayTeam.id].points++;
+                    result[homeTeam.id].tie++;
+                    result[awayTeam.id].tie++;
                     break;
 
                 case homeTeam.score > awayTeam.score:
-                    result[homeTeam.id].points + 3;
+                    result[homeTeam.id].win++;
+                    result[awayTeam.id].lose++;
                     break;
 
                 case homeTeam.score < awayTeam.score:
-                    result[awayTeam.id].points + 3;
+                    result[awayTeam.id].win++;
+                    result[homeTeam.id].lose++;
                     break;
             }
         }
@@ -103,15 +108,38 @@ const showStanding = () => {
     return result;
 };
 
+const byField = (field) => {
+    return (a, b) => a[field] > b[field] ? 1: -1;
+}
+
+const showResultForAllTeams = (obj) => {
+    const result = {};
+
+    for (const teamId in obj) {
+        result[teamId] = {
+            ...obj[teamId],
+            points: 0
+        }
+
+        if(obj[teamId].win > 0) {
+            result[teamId].points += obj[teamId].win * 3;
+        }
+
+        if(obj[teamId].tie > 0) {
+            result[teamId].points += obj[teamId].tie;
+        }
+    }
+    const resultArray = Object.entries(result).sort((a, b) => b[1].points - a[1].points);
+    const objResult = resultArray.map(([key, value]) => ({ [key]: value }));
+    return objResult;
+}
+
 const test = showWeekResults(1);
 const test1 = showStanding();
-console.log(test);
+const test2 = showResultForAllTeams(test1);
+// console.log(test);
 // console.log(test1);
-// RULES: win -> 3pt, deuce = 1pt, loose = 0pt
-// {
-//   homeTeam: {id: 1, score: 2},
-//   awayTeam: {id: 3, score: 3},
-// },
+console.log(test2);
 
 /*
     {[team.id]: {score: number, concede: number, points: number}}
