@@ -17,7 +17,7 @@ class User {
     };
 };
 
-const newUser = [
+const newUsers = [
     new User(1, 'Danylo', 22),
     new User(2, 'Nikita', 19),
     new User(3, 'Denis', 24),

@@ -1,5 +1,5 @@
 // HW1 - delete and repeat
-const arr = [3, 2, 2, 3, 4, 5, 1, 3,];
+const arr = [3, 2, 2, 3, 4, 5, 1, 3, 3, 6, 7, 9, 3];
 const filterValue = (arr, value) => {
     const filteredArray = arr.filter(item => item !== value);
     const filteredCount = arr.length - filteredArray.length;
@@ -24,9 +24,9 @@ const ownFilterValue = (arr, value) => {
 
     const sortedArray = filterArray.sort((a, b) => {
         if(typeof a === 'number' && typeof b === 'number') {
-            return a - b;
+            return a, b;
         } else {
-            return a.toString() < b.toString() ? -1 : 0;
+            return a.toString() > b.toString() ? 1 : (a.toString() < b.toString()) ? -1 : 0;
         }
     });
 

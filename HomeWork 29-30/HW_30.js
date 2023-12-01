@@ -46,11 +46,7 @@ console.log(userInObject);
 
 
 const sortUsers = (object, sortParam) => {
-    const usersArray = [];
-
-    for (const item in object) {
-        usersArray.push(object[item]);
-    }
+    const usersArray = Object.values(object);
 
     usersArray.sort((a, b) => {
         const valueA = a[sortParam];
@@ -59,12 +55,14 @@ const sortUsers = (object, sortParam) => {
         if(typeof valueA === 'number' && typeof valueB === 'number') {
             return valueA - valueB;
         } else if (typeof valueA === 'string' && typeof valueB === 'string'){
-            return valueA > valueB ? 1 : -1;
+            return valueA < valueB ? 1 : (valueA > valueB) ? -1 : 0;
         }
     });
 
     return usersArray;
 };
-
 const sortListUsers = sortUsers(userInObject, 'name');
 console.log(sortListUsers);
+
+const test = [{id: 1, value: 1},{id: 3, value: 1},{id: 2, value: 1}].sort((a, b) => a.value > b.value ? -1 : 0);
+console.log(test);
