@@ -1,0 +1,58 @@
+.first-div {
+    display: flex;
+    width: 600px;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid red;
+}
+.input {
+    height: 10px;
+    margin-top: 35px;
+}
+.dynamic-div {
+    display: flex;
+    width: 40px;
+    font-size: 20px;
+    align-items: center;
+    border: 2px solid green;
+}
+.hide {
+    display: none;
+}
+
+.table-div {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    margin-top: 10px;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.table-div td, .table-div tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.picture {
+    width: 900px;
+    height: 600px;
+    object-fit: cover;
+}
+
+.link-div {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    border: 10px solid rgb(10%, 50%, 40%);
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.link-div a {
+    text-decoration: none;
+    color: #000;
+}
