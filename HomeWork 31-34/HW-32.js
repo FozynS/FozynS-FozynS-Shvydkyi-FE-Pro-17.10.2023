@@ -3,7 +3,7 @@
 tr*10>td*10{10}
 */
 
-"use strict"
+"use strict";
 const divTable = document.querySelector('.table-div');
 const table = document.createElement('table');
 

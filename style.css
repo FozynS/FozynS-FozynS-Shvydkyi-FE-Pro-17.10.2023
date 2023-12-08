@@ -9,16 +9,22 @@
     height: 10px;
     margin-top: 35px;
 }
+.input:focus + .dynamic-div {
+    width: auto;
+}
 .dynamic-div {
     display: flex;
     width: 40px;
     font-size: 20px;
     align-items: center;
     border: 2px solid green;
+    width: 0;
+    overflow: hidden;
+
 }
-.hide {
+/* .hide {
     display: none;
-}
+} */
 
 .table-div {
     display: flex;

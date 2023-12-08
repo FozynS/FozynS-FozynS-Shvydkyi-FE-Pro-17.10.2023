@@ -3,14 +3,20 @@
 Вивести зображення з цієї папки, отримане випадковим чином (Math.random)
 */
 
-"use strict"
+"use strict";
 const imageDiv = document.querySelector('.div-image');
 
 const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg'];
 
-const randomIndex = Math.floor(Math.random() * images.length);
+const getRandomIndex = (arr) => {
+    const min = 0;
+    const max = Math.floor(arr.length);
+    const randomIndex = Math.floor(Math.random() * (max - min)) + min;
 
-const imagePath = `images/${images[randomIndex]}`;
+    return randomIndex;
+}
+
+const imagePath = `images/${images[getRandomIndex(images)]}`;
 
 const randomImage = document.createElement('img');
 randomImage.classList.add('picture')
