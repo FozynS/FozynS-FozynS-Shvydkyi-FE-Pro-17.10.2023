@@ -39,16 +39,8 @@ const changeSlide = (btn) => {
 }
 
 const hideBtns = () => {
-    if(activeSlideIndex === slidesCount - 1) {
-        nextBtn.classList.add('hide');
-    } else {
-        nextBtn.classList.remove('hide');
-    }
-    if(activeSlideIndex === 0) {
-        prevBtn.classList.add('hide');
-    } else {
-        prevBtn.classList.remove('hide');
-    }
+    nextBtn.classList.toggle('hide', activeSlideIndex === slidesCount - 1);
+    prevBtn.classList.toggle('hide', activeSlideIndex === 0);
 }
 
 nextBtn.addEventListener('click', () => {

@@ -17,13 +17,13 @@ const resultTable = document.querySelector('.save-table');
 
 save.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const birthdate = document.getElementById('birthdate').value;
+    const form = document.querySelector('.registration_form');
+    const firstName = form.elements['first-name'].value;
+    const lastName = form.elements['last-name'].value;
+    const birthdate = form.elements['birthdate'].value;
     const gender = document.querySelector('input[name="gender"]:checked').value;
-    const city = document.getElementById('city').value;
-    const address = document.getElementById('address').value;
+    const city = form.elements['city'].value;
+    const address = form.elements['address'].value;
     const languages = [...document.querySelectorAll('input[name="language"]:checked')].map((language => language.value)).join(', ');
 
     const tableHTML = `
@@ -51,6 +51,3 @@ save.addEventListener('click', (e) => {
 
     resultTable.innerHTML = tableHTML;;
 });
-
-
-

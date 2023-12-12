@@ -11,10 +11,9 @@ const emojiList = document.querySelector('.section-emoji_list');
 
 const increaseCounter = (counter) => {
     counter.innerText = parseInt(counter.innerText, 10) + 1
-
 }
 
-emojiList.addEventListener('click', (e) => {
+const findImageforCounter = (e) => {
     const {target} = e;
 
     if(target.classList.contains('img')) {
@@ -22,4 +21,6 @@ emojiList.addEventListener('click', (e) => {
         const img = target.closest('.img').nextElementSibling;
         increaseCounter(img);
     }
-});
+}
+
+emojiList.addEventListener('click', findImageforCounter);

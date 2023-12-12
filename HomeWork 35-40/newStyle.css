@@ -37,10 +37,7 @@
 }
 .section-product_list td, 
 .section-product_list tr {
-    display: flex;
     border: 1px solid #ddd;
-    margin-right: 20px;
-    padding: 6px;
     text-align: center;
 }
 
@@ -48,15 +45,6 @@
     display: none;
 }
 
-.product-card {
-    position: absolute;
-    top: 300px;
-    width: 150px;
-    border: 2px solid purple;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: rgb(189, 189, 189);
-}
 .title {
     margin-left: 40px;
 }
@@ -77,7 +65,6 @@
     border-color: green;
     background-color: green;
     color: #fff;
-    margin-left: 40px;
 }
 
 

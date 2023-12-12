@@ -38,109 +38,47 @@
             </section>
             <section class="section-product_list">
                 <table class="products-list hide">
-                    <div class="product-card hide">
-                        <h3 class="title">Product</h3>
-                        <button class="back btn">Back</button>
-                        <button class="buy btn">Buy</button>
-                    </div>
-                <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                    <tr>
+                        <td>Product</td>
+                        <td>Description</td>
+                        <td>Price</td>
+                        <td>Availability</td>
+                        <td>Action</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Apple</td>
+                        <td>Fresh and delicious apples</td>
+                        <td>$1.50</td>
+                        <td>In Stock</td>
+                        <td><button class="buy btn">Buy</button></td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Carrot</td>
+                        <td>Organic carrots for a healthy diet</td>
+                        <td>$0.75</td>
+                        <td>In Stock</td>
+                        <td><button class="buy btn">Buy</button></td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Salmon</td>
+                        <td>Fresh salmon fillet</td>
+                        <td>$8.99</td>
+                        <td>In Stock</td>
+                        <td><button class="buy btn">Buy</button></td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Chicken</td>
+                        <td>Lean chicken breast</td>
+                        <td>$5.99</td>
+                        <td>In Stock</td>
+                        <td><button class="buy btn">Buy</button></td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Tomato</td>
+                        <td>Ripe tomatoes for salads</td>
+                        <td>$2.25</td>
+                        <td>In Stock</td>
+                        <td><button class="buy btn">Buy</button></td>
                     </tr>
                 </table>
             </section>
@@ -151,11 +89,11 @@
                 <form action="hw.html" class="order-form">
                     <fieldset>
                         <legeng>Your Name and Surname:</legeng>
-                        <input id="customer-name" type="text" placeholder="Danylo Shvydkyi " required>
+                        <input class="customer-name" type="text" placeholder="Danylo Shvydkyi " required>
                     </fieldset>
                     <fieldset>
                         <label>Choose you city:</label>
-                        <select name="cities" id="cities" required>
+                        <select name="cities" class="cities" required>
                             <option value="Одеса">Одеса</option>
                             <option value="Київ">Київ</option>
                             <option value="Харків">Харків</option>
@@ -167,35 +105,35 @@
                         <legeng>Your post-office:</legeng>
                         <br>
                         <label>
-                            <input name="post" type="radio" required>New post-office №35
+                            <input name="post" type="radio" value="New post-office №35" required>New post-office №35
                         </label>
                         <br>
                         <label>
-                            <input name="post" type="radio" required>New post-office №57
+                            <input name="post" type="radio" value="New post-office №57" required>New post-office №57
                         </label>
                         <br>
                         <label>
-                            <input name="post" type="radio" required>New post-office №79
+                            <input name="post" type="radio" value="New post-office №79" required>New post-office №79
                         </label>
                     </fieldset>
                     <fieldset>
                         <legeng>Choose a payment method</legeng>
                         <br>
                         <label>
-                            <input name="payment" type="radio" required>Card
+                            <input name="payment" type="radio" value="Card" required>Card
                         </label>
                         <br>
                         <label>
-                            <input name="payment" type="radio" required>After receiving
+                            <input name="payment" type="radio" value="After receiving" required>After receiving
                         </label>
                     </fieldset>
                     <fieldset>
                         <legeng>How many you want?</legeng>
-                        <input id="quantity" type="number" placeholder="10" required>
+                        <input class="quantity" type="number" placeholder="10" required>
                     </fieldset>
                     <fieldset>
                         <legeng>Your comment</legeng>
-                        <textarea name="text" id="text" cols="30" rows="10" placeholder="I want to..."></textarea>
+                        <textarea name="text" class="text" cols="30" rows="10" placeholder="I want to..."></textarea>
                         <input type="submit" value="Submit" class="submit">
                     </fieldset>
                 </form>
@@ -231,14 +169,14 @@
         <section class="registration_form-container">
             <form class="registration_form">
                 <legend>First Name:</legend>
-                <input type="text" id="first-name" name="first-name" required>
+                <input type="text" name="first-name" required>
             
                 <legend>Last Name:</legend>
-                <input type="text" id="last-name" name="last-name" required>
+                <input type="text" name="last-name" required>
             
                 <legend >Birthdate:</legend>
                 <label >
-                    <input type="date" id="birthdate" name="birthdate" required>
+                    <input type="date" name="birthdate" required>
                 </label>
                 
             
@@ -247,7 +185,7 @@
                 <label><input type="radio" name="gender" value="female">Female</label>
             
                 <legend>City:</legend>
-                <select id="city" name="city" required>
+                <select name="city" required>
                     <option value="odesa">Odesa</option>
                     <option value="kyiv">Kyiv</option>
                     <option value="kharkiv">Kharkiv</option>
@@ -258,7 +196,7 @@
             
                 <label for="address">Address:</label>
                 <br>
-                <input id="address" name="address" required>
+                <input name="address" required>
             
                 <legend>Languages:</legend>
                 <label><input type="checkbox" name="language" value="ukrainian">Ukrainian</label> <br>

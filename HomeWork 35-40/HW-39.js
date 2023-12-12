@@ -18,31 +18,32 @@ const containerForm = document.querySelector('.container-form');
 const orderForm = document.querySelector('.order-form');
 const orderInfo = document.querySelector('.order-info');
 
-
-buy.addEventListener('click', () => {
+const addNewClass = () => {
     containerForm.classList.remove('hide');
-    productCard.classList.add('hide');
     productsList.classList.add('hide');
+}
+buy.forEach((btn) => {
+    btn.addEventListener('click', addNewClass);
 });
 
 const areFormValied = () => {
-    const customerName = document.getElementById('customer-name').value;
-    const city = document.getElementById('cities').value;
+    const customerName = document.querySelector('.customer-name').value;
+    const city = document.querySelector('.cities').value;
     const postOffice = document.querySelector('input[name="post"]:checked');
     const paymentMethod = document.querySelector('input[name="payment"]:checked');
-    const quantity = document.getElementById('quantity').value;
-    const comment = document.getElementById('text').value;
+    const quantity = document.querySelector('.quantity').value;
+    const comment = document.querySelector('.text').value;
 
     return customerName && city && postOffice && paymentMethod && quantity && comment;
 }
 
 const createOrderInfo = () => {
-    const customerName = document.getElementById('customer-name').value;
-    const city = document.getElementById('cities').value;
+    const customerName = document.querySelector('.customer-name').value;
+    const city = document.querySelector('.cities').value;
     const postOffice = document.querySelector('input[name="post"]:checked').value;
     const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-    const quantity = document.getElementById('quantity').value;
-    const comment = document.getElementById('text').value;
+    const quantity = document.querySelector('.quantity').value;
+    const comment = document.querySelector('.text').value;
 
     const orderInfoString = `
     <p><strong>Your Name and Surname:</strong> ${customerName}</p>

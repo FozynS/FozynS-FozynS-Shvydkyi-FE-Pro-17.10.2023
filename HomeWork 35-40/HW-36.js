@@ -12,29 +12,24 @@
 const categoriesProducts = document.querySelector('.section-categories-products');
 
 const productsList = document.querySelector('.products-list');
-const productCard = document.querySelector('.product-card');
 
-const back = document.querySelector('.back');
-const buy = document.querySelector('.buy');
+const buy = document.querySelectorAll('.buy');
 
-categoriesProducts.addEventListener('click', (e) => {
+const viewProductList = (e) => {
     const {target} = e;
 
     if(target.closest('.categorie')) {
         productsList.classList.remove('hide');
     }
+}
 
-    if(target.closest('.products-list')) {
-        productCard.classList.remove('hide');
-    }
+categoriesProducts.addEventListener('click', viewProductList);
 
-});
-
-back.addEventListener('click', () => {
-    productCard.classList.add('hide');
-});
-
-buy.addEventListener('click', () => {
-    productCard.classList.add('hide');
+const addClass = () => {
     productsList.classList.add('hide');
+    alert('Congratulations. You buy this product)');
+}
+
+buy.forEach((btn) => {
+    btn.addEventListener('click', addClass);
 });
