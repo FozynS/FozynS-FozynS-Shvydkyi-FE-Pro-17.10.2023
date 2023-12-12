@@ -15,7 +15,7 @@ const slidesCount = mainSlide.querySelectorAll('div').length;
 
 let activeSlideIndex = 0;
 
-const changeSlide = (btn) => {
+const whatBtn = (btn) => {
     if(btn === 'next') {
         activeSlideIndex++;
         if(activeSlideIndex === slidesCount) {
@@ -29,7 +29,11 @@ const changeSlide = (btn) => {
     }
 
     hideBtns();
+}
 
+const changeSlide = (btn) => {
+    whatBtn(btn);
+    
     const height = container.clientHeight;
     mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
 }
@@ -40,7 +44,6 @@ const hideBtns = () => {
     } else {
         nextBtn.classList.remove('hide');
     }
-
     if(activeSlideIndex === 0) {
         prevBtn.classList.add('hide');
     } else {

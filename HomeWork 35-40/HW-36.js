@@ -34,7 +34,7 @@ back.addEventListener('click', () => {
     productCard.classList.add('hide');
 });
 
-// buy.addEventListener('click', () => {
-//     productCard.classList.add('hide');
-//     productsList.classList.add('hide');
-// });
+buy.addEventListener('click', () => {
+    productCard.classList.add('hide');
+    productsList.classList.add('hide');
+});
