@@ -32,54 +32,154 @@
         </section>
         <section class="section-categories-products">
             <section class="section-categories_list">
-                <div class="categorie">Meat</div>
-                <div class="categorie">Fish</div>
-                <div class="categorie">Vegetables</div>
+                <div class="categorie" data-category="Meat">Meat</div>
+                <div class="categorie" data-category="Fish">Fish</div>
+                <div class="categorie" data-category="Vegetables">Vegetables</div>
             </section>
             <section class="section-product_list">
-                <table class="products-list hide">
-                    <tr>
-                        <td>Product</td>
-                        <td>Description</td>
-                        <td>Price</td>
-                        <td>Availability</td>
-                        <td>Action</td>
-                    </tr>
-                    <tr>
-                        <td>Apple</td>
-                        <td>Fresh and delicious apples</td>
-                        <td>$1.50</td>
-                        <td>In Stock</td>
-                        <td><button class="buy btn">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td>Carrot</td>
-                        <td>Organic carrots for a healthy diet</td>
-                        <td>$0.75</td>
-                        <td>In Stock</td>
-                        <td><button class="buy btn">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td>Salmon</td>
-                        <td>Fresh salmon fillet</td>
-                        <td>$8.99</td>
-                        <td>In Stock</td>
-                        <td><button class="buy btn">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td>Chicken</td>
-                        <td>Lean chicken breast</td>
-                        <td>$5.99</td>
-                        <td>In Stock</td>
-                        <td><button class="buy btn">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td>Tomato</td>
-                        <td>Ripe tomatoes for salads</td>
-                        <td>$2.25</td>
-                        <td>In Stock</td>
-                        <td><button class="buy btn">Buy</button></td>
-                    </tr>
+                <table class="products-list hide" data-category="Meat">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="hide">Description</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beef</td>
+                            <td>Fresh and lean beef</td>
+                            <td>$7.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Chicken</td>
+                            <td>Lean chicken breast</td>
+                            <td>$5.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Pork</td>
+                            <td>Tender pork chops</td>
+                            <td>$6.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Lamb</td>
+                            <td>High-quality lamb cuts</td>
+                            <td>$9.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Ground Beef</td>
+                            <td>Ground beef for versatile recipes</td>
+                            <td>$4.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="products-list hide" data-category="Fish">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Salmon</td>
+                            <td>Fresh salmon fillet</td>
+                            <td>$8.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Tuna</td>
+                            <td>High-quality tuna</td>
+                            <td>$10.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Shrimp</td>
+                            <td>Delicious and succulent shrimp</td>
+                            <td>$12.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Trout</td>
+                            <td>Fresh trout from local waters</td>
+                            <td>$9.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Crab</td>
+                            <td>Crab legs for a seafood feast</td>
+                            <td>$14.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="products-list hide" data-category="Vegetables">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Carrot</td>
+                            <td>Organic carrots for a healthy diet</td>
+                            <td>$0.75</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Tomato</td>
+                            <td>Ripe tomatoes for salads</td>
+                            <td>$2.25</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Spinach</td>
+                            <td>Fresh spinach leaves for salads</td>
+                            <td>$1.50</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Broccoli</td>
+                            <td>Nutritious broccoli florets</td>
+                            <td>$2.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Pepper</td>
+                            <td>Colorful bell peppers for cooking</td>
+                            <td>$1.99</td>
+                            <td>In Stock</td>
+                            <td><button class="buy btn">Buy</button></td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
         </section>
@@ -194,7 +294,7 @@
                 </select>
                 <br>
             
-                <label for="address">Address:</label>
+                <label>Address:</label>
                 <br>
                 <input name="address" required>
             

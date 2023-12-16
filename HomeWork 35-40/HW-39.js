@@ -20,9 +20,10 @@ const orderInfo = document.querySelector('.order-info');
 
 const addNewClass = () => {
     containerForm.classList.remove('hide');
-    productsList.classList.add('hide');
+    productsLists.forEach((list) => {list.classList.add('hide')});
 }
-buy.forEach((btn) => {
+
+buyButtons.forEach((btn) => {
     btn.addEventListener('click', addNewClass);
 });
 
