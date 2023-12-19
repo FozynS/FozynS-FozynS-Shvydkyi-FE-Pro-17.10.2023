@@ -9,21 +9,16 @@ const buildRoute = (routeSting, params) => {
 // use replace method
 }
 
-console.log(buildRoute('/user/:user-id/create', {userId: 1})); 
-console.log(buildRoute('/:tour-id/:game-id/:player-id/goal', {tourId: 1, gameId: 14, playerId: 125151})); 
-
-Результат должен быть такой 
-// 'user/1/create'
-// '/1/14/125151/goal'
+console.log(buildRoute('/user/:user-id/create', {userId: 1})); // 'user/1/create'
+console.log(buildRoute('/:tour-id/:game-id/:player-id/goal', {tourId: 1, gameId: 14, playerId: 125151})); // '/1/14/125151/goal'
 */
 
 const buildRoute = (routeString, params) => {
-    // const value = Object.values(params);
-    let result = routeString.replace(/(:\w+-\w+)/g, '-');
+    const value = Object.values(params);
+    const result = routeString.replace(/(:\w+-\w+)/g, () => value.shift());
 
-    console.log(result);
     return result;
 }
     
-(buildRoute('/user/:user-id/create', {userId: 1})); // '/user/1/create'
-(buildRoute('/:tour-id/:game-id/:player-id/goal', {tourId: 1, gameId: 14, playerId: 125151})); // '/1/14/125151/goal'
+console.log(buildRoute('/user/:user-id/create', {userId: 1})); // '/user/1/create'
+console.log(buildRoute('/:tour-id/:game-id/:player-id/goal', {tourId: 1, gameId: 14, playerId: 125151})); // '/1/14/125151/goal'
