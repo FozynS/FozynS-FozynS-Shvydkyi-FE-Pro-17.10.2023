@@ -11,8 +11,8 @@
 const categoriesProducts = document.querySelector('.section-categories-products');
 const productsLists = document.querySelectorAll('.products-list');
 const categories = document.querySelectorAll('.categorie');
-const buyButtons = document.querySelectorAll('.buy');
 const informationDiv = document.querySelectorAll('.section-product-information > div');
+const informationSection = document.querySelector('.section-product-information');
 
 const showProductList = (categorie) => {
     productsLists.forEach((list) => {
@@ -54,7 +54,9 @@ const buyProduct = (e) => {
     }
 };
 
-buyButtons.forEach((btn) => {
-    btn.addEventListener('click', buyProduct);
+informationSection.addEventListener('click', (e) => {
+    if(e.target.closest('.buy')) {
+        buyProduct
+    }
 });
 
