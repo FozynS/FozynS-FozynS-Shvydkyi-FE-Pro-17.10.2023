@@ -22,11 +22,11 @@ const addNewClass = () => {
     containerForm.classList.remove('hide');
     productsLists.forEach((list) => {list.classList.add('hide')});
 }
-
-buyButtons.forEach((btn) => {
-    btn.addEventListener('click', addNewClass);
+informationSection.addEventListener('click', (e) => {
+    if(e.target.closest('.buy')) {
+        addNewClass();
+    }
 });
-
 const areFormValied = () => {
     const customerName = document.querySelector('.customer-name').value;
     const city = document.querySelector('.cities').value;

@@ -56,7 +56,7 @@ const buyProduct = (e) => {
 
 informationSection.addEventListener('click', (e) => {
     if(e.target.closest('.buy')) {
-        buyProduct
+        buyProduct(e);
     }
 });
 
