@@ -1,0 +1,54 @@
+.section-comman {
+    display: flex;
+    justify-content: space-between;
+}
+.section-comman > div {
+    width: 25vh;
+    height: 30vh;
+}
+.section-input {
+    display: flex;
+    flex-direction: column;
+}
+.input-number {
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.submit {
+    width: 190px;
+    height: 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.submit:active{
+    box-shadow: inset;
+    width: 180px;
+    height: 19px;
+}
+/* .section-posts {
+}
+.post {
+}
+.section-comments {
+} */
+.btn {
+    width: 130px;
+    height: 25px;
+    color: #fff;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btn:active {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.96); 
+}
+
+.alert {
+    border: 1px solid red;
+    border-radius: 20px;
+}
