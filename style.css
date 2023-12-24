@@ -1,6 +1,6 @@
 .section-comman {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .section-comman > div {
     width: 25vh;
