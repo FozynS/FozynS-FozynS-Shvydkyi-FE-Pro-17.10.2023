@@ -11,42 +11,68 @@ const post = document.querySelector('.section-posts');
 const commentDiv = document.querySelector('.section-comments');
 const button = document.querySelector('.btn');
 
-const getIdPost = () => {
-    const number = document.querySelector('.input-number').value;
+const getIdPost = (number) => {
+    const getId = new Promise((resolve, reject) => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
+            .then((res) => {
+                if(!res.ok) {
+                    throw new Error('Запрос завершился нуедачеуй')
+                } else {
+                    return res.json()
+                }
+            })
+            .then(res => resolve(res))
+            .catch(e => reject(e))
+    });
 
-    if(!number) {
-        inputNumber.classList.add('alert');
+    return getId;
+}
+
+const checkNumber = () => {
+    const number = document.querySelector('.input-number').value;
+    const max = 100;
+    const min = 1;
+    const check = !number || number < min || number > max;
+
+    if(check) {
+        inputNumber.classList.toggle('alert');
         alert('Введите число от 1 до 100');
     } else {
-        try {
-            fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
-                .then((res) => res.json())
-                .then((res) => showPostInBlock(res))
-        } catch (error) {
-            console.log(error);
-            alert('Введите число от 1 до 100');
-        }
+        return number
     }
 }
 
-const showPostInBlock = (res) => {
+const showPostOrComment = (res, e) => {
     console.log(res);
 
-    const title = document.createElement('h3');
-    const postTitle = res.title;
+    if(e.target.classList.contains('submit')) {
+        const title = document.createElement('h4');
+        const postTitle = res.title;
 
-    title.innerText = postTitle;
-    post.appendChild(title);
+        title.innerText = postTitle;
+        post.appendChild(title);
+    }
+    
+    if(e.target.classList.contains('btn')) {
+        const comment = document.createElement('p');
+        const postComment = res.body;
+
+        comment.innerText = postComment;
+        commentDiv.appendChild(comment);
+    } 
+
 }
 
-// const viewCommentInBlock = (res) => {
-//     const comment = document.createElement('p');
-//     const postComment = res.body;
+const callShowFunc = (e) => {
+    const number = checkNumber();
+    const getResult = getIdPost(number);
 
-//     comment.innerText = postComment;
-//     commentDiv.appendChild(comment);
-// }   
+    return (
+        getResult
+            .then((res) => showPostOrComment(res, e))
+            .catch((e) => console.log(e))
+    )
+}   
 
-
-submit.addEventListener('click', getIdPost);
-// button.addEventListener('click', );
+submit.addEventListener('click', (e) => callShowFunc(e));
+button.addEventListener('click', (e) => callShowFunc(e));
