@@ -14,19 +14,11 @@ console.log(buildRoute('/:tour-id/:game-id/:player-id/goal', {tourId: 1, gameId:
 */
 
 const buildRoute = (routeString, params) => {
-    
-    const result = routeString.replace(/:([\w-]+)/g, (match, group) => {
-        for (const key in params) {
-            const transformGroup = group.replace(/-([a-z])/g, (elem, match) => match.toUpperCase());
-            const element = params[key];
 
-            if(transformGroup === key) {
-                return element;
-            }
-        }
+    return routeString.replace(/:([\w-]+)/g, (_, routeParam) => {
+        const routeParamCamelCase = routeParam.replace(/-([a-z])/g, (_, match) => match.toUpperCase());
+        return params[routeParamCamelCase];
     });
-
-    return result;
 }
 
 console.log(buildRoute('/user/:user-id/create', {userId: 1})); // '/user/1/create'

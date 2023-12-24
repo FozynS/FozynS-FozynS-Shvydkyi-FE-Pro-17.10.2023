@@ -1,8 +1,8 @@
 "use strict";
 
 const getRandomDelay = () => {
-    const minSeconds = Math.ceil(3);
-    const maxSeconds = Math.floor(7);
+    const minSeconds = 3;
+    const maxSeconds = 7;
     const randomSeconds = Math.floor(Math.random() * (maxSeconds - minSeconds)) + minSeconds;
 
     return randomSeconds;
