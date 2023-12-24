@@ -16,9 +16,9 @@ const getIdPost = (number) => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
             .then((res) => {
                 if(!res.ok) {
-                    throw new Error('Запрос завершился нуедачеуй')
+                    throw new Error('Запрос завершился нуедачеуй');
                 } else {
-                    return res.json()
+                    return res.json();
                 }
             })
             .then(res => resolve(res))
@@ -38,7 +38,7 @@ const checkNumber = () => {
         inputNumber.classList.toggle('alert');
         alert('Введите число от 1 до 100');
     } else {
-        return number
+        return number;
     }
 }
 
