@@ -7,8 +7,8 @@
 "use strict";
 const inputNumber = document.querySelector('.input-number');
 const submit = document.querySelector('.submit');
-const post = document.querySelector('.section-posts');
-const commentDiv = document.querySelector('.section-comments');
+const postSection = document.querySelector('.section-posts');
+const commentSection = document.querySelector('.section-comments');
 const button = document.querySelector('.btn');
 
 const getIdPost = (number) => {
@@ -48,17 +48,26 @@ const showPostOrComment = (res, e) => {
     if(e.target.classList.contains('submit')) {
         const title = document.createElement('h4');
         const postTitle = res.title;
+        const checkTitle = postSection.querySelector('h4');
 
         title.innerText = postTitle;
-        post.appendChild(title);
+
+        if(!checkTitle) {
+            postSection.appendChild(title);
+        } 
+        
     }
     
     if(e.target.classList.contains('btn')) {
         const comment = document.createElement('p');
         const postComment = res.body;
+        const checkComment = commentSection.querySelector('p');
 
         comment.innerText = postComment;
-        commentDiv.appendChild(comment);
+
+        if(!checkComment) {
+            commentSection.appendChild(comment);
+        }
     } 
 
 }
