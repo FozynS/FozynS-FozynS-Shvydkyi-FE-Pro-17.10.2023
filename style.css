@@ -52,3 +52,29 @@
     border: 1px solid red;
     border-radius: 20px;
 }
+
+.hide {
+    display: none;
+}
+
+.weather-section {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+}
+.input-city {
+    width: 150px;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.btn-weather {
+    width: 190px;
+    height: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+/* .weather-information {
+
+} */

@@ -28,11 +28,15 @@ const getIdPost = (number) => {
     return getId;
 }
 
+const showButton = () => {
+    button.classList.remove('hide')
+}
+
 const checkNumber = () => {
     const number = document.querySelector('.input-number').value;
     const max = 100;
     const min = 1;
-    const check = !number || number < min || number > max;
+    const check = number < min || number > max;
 
     if(check) {
         inputNumber.classList.toggle('alert');
@@ -74,13 +78,16 @@ const showPostOrComment = (res, e) => {
 
 const callShowFunc = (e) => {
     const number = checkNumber();
-    const getResult = getIdPost(number);
-
-    return (
-        getResult
+    
+    if(number !== undefined) {
+        showButton();
+        getIdPost(number)
             .then((res) => showPostOrComment(res, e))
             .catch((e) => console.log(e))
-    )
+    } else {
+        console.error('Введенное значение недопустимо.');
+    }
+    
 }   
 
 submit.addEventListener('click', (e) => callShowFunc(e));
