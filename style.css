@@ -1,16 +1,21 @@
 .section-comman {
     display: flex;
     justify-content: space-around;
+    margin-top: 30px;
 }
 .section-comman > div {
-    width: 25vh;
-    height: 30vh;
+    width: 30vh;
+    height: 40vh;
 }
 .section-input {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .input-number {
+    width: 80px;
+    height: 15px;
     border: 1px solid grey;
     border-radius: 20px;
 }
@@ -21,18 +26,37 @@
     cursor: pointer;
     border: 1px solid grey;
     border-radius: 20px;
+    background: linear-gradient(337deg, rgba(92,212,19,1) 0%, rgba(9,222,237,1) 47%, rgba(238,245,4,1) 100%);
+
 }
+
 .submit:active{
     box-shadow: inset;
     width: 180px;
     height: 19px;
 }
-/* .section-posts {
+.section-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 5px dashed green;
+    border-radius: 20px;
 }
-.post {
+.section-posts > h3 {
+    display: flex;
+    align-items: start;
+    justify-content: center;
 }
 .section-comments {
-} */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: thick double red;
+    border-radius: 20px;
+}
+
 .btn {
     width: 130px;
     height: 25px;
@@ -59,7 +83,7 @@
 
 .weather-section {
     display: flex;
-    margin-top: 20px;
+    margin-top: 40px;
     flex-direction: column;
 }
 .input-city {

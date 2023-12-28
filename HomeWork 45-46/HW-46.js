@@ -29,7 +29,7 @@ const getInformation = (city) => {
     try {
         const xml = new XMLHttpRequest();
         xml.addEventListener('load', transformatiomRequest);
-        xml.open('GET', `http://api.openweathermap.org/data/2.5/weather?q=${city.toUpperCase()}&units=metric&APPID=5d066958a60d315387d9492393935c19`);
+        xml.open('GET', `https://api.openweathermap.org/data/2.5/weather?q=${city.toUpperCase()}&units=metric&APPID=5d066958a60d315387d9492393935c19`);
         xml.send();
     } catch (error) {
         console.error(error);
