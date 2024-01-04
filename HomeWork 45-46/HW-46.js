@@ -29,7 +29,7 @@ const getInformation = (city) => {
     try {
         const xml = new XMLHttpRequest();
         xml.addEventListener('load', transformatiomRequest);
-        xml.open('GET', `https://api.openweathermap.org/data/2.5/weather?q=${city.toUpperCase()}&units=metric&APPID=5d066958a60d315387d9492393935c19`);
+        xml.open('GET', `https://api.openweathermap.org/data/2.5/weather?q=${city.toUpperCase()}&units=metric&APPID=5d066958a60d315387d9492393935c19`, true);
         xml.send();
     } catch (error) {
         console.error(error);
@@ -95,7 +95,7 @@ const checkTopic = (item, data) => {
 
             if (value === 'icon') {
                 const img = document.createElement('img');
-                img.setAttribute('src', `http://openweathermap.org/img/w/${weather[value]}.png`)
+                img.setAttribute('src', `https://openweathermap.org/img/w/${weather[value]}.png`)
                 list.appendChild(img);
             }
         }

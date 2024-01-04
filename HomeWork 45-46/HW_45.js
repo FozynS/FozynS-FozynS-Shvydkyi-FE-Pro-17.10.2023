@@ -13,9 +13,10 @@ const button = document.querySelector('.btn');
 
 const title = document.querySelector('.title');
 const description = document.querySelector('.description');
+const comments = document.querySelector('.comments');
 
-const getIdPost = (number) => {
-    const getId = new Promise((resolve, reject) => {
+const getIdPost = async (number) => {
+    const getId = await new Promise((resolve, reject) => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
             .then((res) => {
                 if(!res.ok) {
@@ -42,40 +43,48 @@ const checkNumber = () => {
     const check = number < min || number > max;
 
     if(check) {
-        inputNumber.classList.toggle('alert');
+        inputNumber.classList.add('alert');
         alert('Введите число от 1 до 100');
     } else {
+        inputNumber.classList.remove('alert');
         return number;
     }
 }
 
-const showPostOrComment = (res, e) => {
+const showPost = (res, e) => {
     console.log(res);
-    
-    title.innerText = '';
-    description.innerText = '';
 
     if(e.target.classList.contains('submit')) {
+        title.innerText = '';
+        description.innerText = '';
+
         const postTitle = res.title;
-        const postComment = res.body;
+        const postDescription = res.body;
 
         title.innerText = postTitle;
-        description.innerText = postComment;
+        description.innerText = postDescription;
     }
     
     if(e.target.classList.contains('btn')) {
-        
-    } 
+        comments.innerText = '';
 
+    } 
 }
 
 const callShowFunc = (e) => {
     const number = checkNumber();
     
     if(number !== undefined) {
-        getIdPost(number)
-            .then((res) => showPostOrComment(res, e))
-            .catch((e) => console.log(e))
+        showButton();
+
+        try {
+            getIdPost(number)
+                .then((res) => showPost(res, e))
+                .catch((e) => console.log(e));
+        } catch (error) {
+            console.error(error);
+        }
+
     } else {
         console.error('Введенное значение недопустимо.');
     }
