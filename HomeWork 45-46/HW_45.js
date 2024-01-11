@@ -14,9 +14,10 @@ const button = document.querySelector('.btn');
 const title = document.querySelector('.title');
 const description = document.querySelector('.description');
 const comments = document.querySelector('.comments');
+const commentsList = document.querySelector('.comments-list');
 
 const getIdPost = async (number) => {
-    const getId = await new Promise((resolve, reject) => {
+    const postId = await new Promise((resolve, reject) => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
             .then((res) => {
                 if(!res.ok) {
@@ -29,11 +30,7 @@ const getIdPost = async (number) => {
             .catch(e => reject(e))
     });
 
-    return getId;
-}
-
-const showButton = () => {
-    button.classList.remove('hide')
+    return postId;
 }
 
 const checkNumber = () => {
@@ -52,7 +49,6 @@ const checkNumber = () => {
 }
 
 const showPost = (res, e) => {
-    console.log(res);
 
     if(e.target.classList.contains('submit')) {
         title.innerText = '';
@@ -64,23 +60,59 @@ const showPost = (res, e) => {
         title.innerText = postTitle;
         description.innerText = postDescription;
     }
-    
+}
+
+const getIdComments = async (number) => {
+    const commentsId = await new Promise((resolve, reject) => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${number}/comments`)
+            .then((res) => {
+                if(!res.ok) {
+                    throw new Error('Запрос завершился нуедачеуй');
+                } else {
+                    return res.json();
+                }
+            })
+            .then(res => resolve(res))
+            .catch(e => reject(e))
+    })
+
+    return commentsId;
+}
+
+const showComments = (res, e) => {
+
     if(e.target.classList.contains('btn')) {
-        comments.innerText = '';
+        commentsList.replaceChildren();
+        button.classList.add('hide');
+        
+        for (const key of res) {
+            const li = document.createElement('li');
+
+            li.innerText = key.body;
+
+            commentsList.appendChild(li);
+        }
 
     } 
+}
+
+const showButton = () => {
+    button.classList.remove('hide')
 }
 
 const callShowFunc = (e) => {
     const number = checkNumber();
     
     if(number !== undefined) {
-        showButton();
-
         try {
             getIdPost(number)
                 .then((res) => showPost(res, e))
+                .then(showButton())
                 .catch((e) => console.log(e));
+
+            getIdComments(number)
+                .then((res) => showComments(res, e))
+                .catch((e) => console.error(e));
         } catch (error) {
             console.error(error);
         }
@@ -90,6 +122,5 @@ const callShowFunc = (e) => {
     }
     
 }   
-
 submit.addEventListener('click', (e) => callShowFunc(e));
 button.addEventListener('click', (e) => callShowFunc(e));
