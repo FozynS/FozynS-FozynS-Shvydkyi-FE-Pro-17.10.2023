@@ -5,33 +5,18 @@
 Зробити завдання використовуючи проміси, перехопити помилки.
 */
 "use strict";
+import './HW-46.js';
+
 const inputNumber = document.querySelector('.input-number');
 const submit = document.querySelector('.submit');
-const postSection = document.querySelector('.section-posts');
-const commentSection = document.querySelector('.section-comments');
+// const postSection = document.querySelector('.section-posts');
+// const commentSection = document.querySelector('.section-comments');
 const button = document.querySelector('.btn');
 
 const title = document.querySelector('.title');
 const description = document.querySelector('.description');
-const comments = document.querySelector('.comments');
+// const comments = document.querySelector('.comments');
 const commentsList = document.querySelector('.comments-list');
-
-const getIdPost = async (number) => {
-    const postId = await new Promise((resolve, reject) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${number}`)
-            .then((res) => {
-                if(!res.ok) {
-                    throw new Error('Запрос завершился нуедачеуй');
-                } else {
-                    return res.json();
-                }
-            })
-            .then(res => resolve(res))
-            .catch(e => reject(e))
-    });
-
-    return postId;
-}
 
 const checkNumber = () => {
     const number = document.querySelector('.input-number').value;
@@ -48,6 +33,23 @@ const checkNumber = () => {
     }
 }
 
+const request = async (url) => {
+    return await new Promise((resolve, reject) => {
+        fetch(url)
+            .then((res) => {
+                if(!res.ok) {
+                    throw new Error('Запрос завершился нуедачеуй');
+                } else {
+                    return res.json();
+                }
+            })
+            .then(res => resolve(res))
+            .catch(e => reject(e))
+    });
+}
+
+const getIdPost = (number) => request(`https://jsonplaceholder.typicode.com/posts/${number}`);
+
 const showPost = (res, e) => {
 
     if(e.target.classList.contains('submit')) {
@@ -62,57 +64,40 @@ const showPost = (res, e) => {
     }
 }
 
-const getIdComments = async (number) => {
-    const commentsId = await new Promise((resolve, reject) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${number}/comments`)
-            .then((res) => {
-                if(!res.ok) {
-                    throw new Error('Запрос завершился нуедачеуй');
-                } else {
-                    return res.json();
-                }
-            })
-            .then(res => resolve(res))
-            .catch(e => reject(e))
-    })
-
-    return commentsId;
-}
+const getIdComments = (number) => request(`https://jsonplaceholder.typicode.com/posts/${number}/comments`);
 
 const showComments = (res, e) => {
+    const fragment = document.createDocumentFragment();
+    button.classList.remove('hide');
+    commentsList.replaceChildren();
 
     if(e.target.classList.contains('btn')) {
-        commentsList.replaceChildren();
         button.classList.add('hide');
         
         for (const key of res) {
             const li = document.createElement('li');
-
             li.innerText = key.body;
-
-            commentsList.appendChild(li);
+            fragment.appendChild(li);
         }
 
+        commentsList.appendChild(fragment);
     } 
-}
-
-const showButton = () => {
-    button.classList.remove('hide')
 }
 
 const callShowFunc = (e) => {
     const number = checkNumber();
     
     if(number !== undefined) {
+
         try {
             getIdPost(number)
                 .then((res) => showPost(res, e))
-                .then(showButton())
                 .catch((e) => console.log(e));
 
             getIdComments(number)
                 .then((res) => showComments(res, e))
                 .catch((e) => console.error(e));
+
         } catch (error) {
             console.error(error);
         }
@@ -122,5 +107,6 @@ const callShowFunc = (e) => {
     }
     
 }   
+
 submit.addEventListener('click', (e) => callShowFunc(e));
 button.addEventListener('click', (e) => callShowFunc(e));

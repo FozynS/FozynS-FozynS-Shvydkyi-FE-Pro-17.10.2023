@@ -55,50 +55,52 @@ const showWeatherInformation = (data) => {
 }
 
 const checkTopic = (item, data) => {
-    if(item === 'main') {
-        const main = data[item];
-        for (const item in main) {
-            const check = item === 'temp' || item === 'pressure' || item === 'humidity';
 
-            if(check) {
-                const li = document.createElement('li')
-                li.innerText = `${item}: ${main[item]}`
-                list.appendChild(li)
+    switch (item) {
+        case 'main':
+            const main = data[item];
+            for (const item in main) {
+                const check = item === 'temp' || item === 'pressure' || item === 'humidity';
+    
+                if(check) {
+                    const li = document.createElement('li')
+                    li.innerText = `${item}: ${main[item]}`
+                    list.appendChild(li)
+                }
             }
-        }
+            break;
+
+        case 'wind': 
+            const wind = data[item];
+            for (const key in wind) {
+                const check = key === 'speed' || key === 'deg';
+
+                if(check) {
+                    const li = document.createElement('li');
+                    li.innerText = `${key}: ${wind[key]}`;
+                    list.appendChild(li);
+                }
+            }
+            break;
         
-    }
-
-    if(item === 'wind') {
-        const wind = data[item];
-        for (const key in wind) {
-            const check = key === 'speed' || key === 'deg';
-
-            if(check) {
-                const li = document.createElement('li');
-                li.innerText = `${key}: ${wind[key]}`;
-                list.appendChild(li);
-            }
-        }
-    }
-
-    if(item === 'weather') {
-        const [weather] = data[item];
+        case 'weather':
+            const [weather] = data[item];
         
-        for (const value in weather) {
-            
-            if(value === 'description') {
-                const li = document.createElement('li');
-                li.innerText = `${value}: ${weather[value]}`;
-                list.appendChild(li);
-            } 
-
-            if (value === 'icon') {
-                const img = document.createElement('img');
-                img.setAttribute('src', `https://openweathermap.org/img/w/${weather[value]}.png`)
-                list.appendChild(img);
+            for (const value in weather) {
+                
+                if(value === 'description') {
+                    const li = document.createElement('li');
+                    li.innerText = `${value}: ${weather[value]}`;
+                    list.appendChild(li);
+                } 
+    
+                if (value === 'icon') {
+                    const img = document.createElement('img');
+                    img.setAttribute('src', `https://openweathermap.org/img/w/${weather[value]}.png`)
+                    list.appendChild(img);
+                }
             }
-        }
+            break;
     }
 }
 
