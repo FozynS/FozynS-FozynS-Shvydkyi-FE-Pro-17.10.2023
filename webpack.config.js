@@ -1,13 +1,36 @@
 "use strict";
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./HomeWork 45-46/HW_45.js",
+
+  entry: {
+    weather: './HomeWork45-46/HW_45.js', 
+    posts: './HomeWork45-46/HW_46.js',
+  },
 
   output: {
-    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    filename: "[name].bundle.js",
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'index.html'), 
+      filename: 'bundle_index.html',
+    }),
+    new CleanWebpackPlugin(),
+  ],
+  
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader",],
+      },
+    ],
   },
 };

@@ -1,21 +1,12 @@
-/*
-Використовуючи API https://jsonplaceholder.typicode.com/ зробити пошук поста за ід.
-Ід має бути введений в інпут (валідація: ід від 1 до 100) Якщо знайдено пост, 
-то вивести на сторінку блок з постом і зробити кнопку для отримання коментарів до посту.
-Зробити завдання використовуючи проміси, перехопити помилки.
-*/
 "use strict";
-import './HW-46.js';
+import "./style.css";
 
 const inputNumber = document.querySelector('.input-number');
 const submit = document.querySelector('.submit');
-// const postSection = document.querySelector('.section-posts');
-// const commentSection = document.querySelector('.section-comments');
 const button = document.querySelector('.btn');
 
 const title = document.querySelector('.title');
 const description = document.querySelector('.description');
-// const comments = document.querySelector('.comments');
 const commentsList = document.querySelector('.comments-list');
 
 const checkNumber = () => {
@@ -48,7 +39,7 @@ const request = async (url) => {
     });
 }
 
-const getIdPost = (number) => request(`https://jsonplaceholder.typicode.com/posts/${number}`);
+const getPostById = (id) => request(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
 const showPost = (res, e) => {
 
@@ -64,7 +55,7 @@ const showPost = (res, e) => {
     }
 }
 
-const getIdComments = (number) => request(`https://jsonplaceholder.typicode.com/posts/${number}/comments`);
+const getCommentsByPostId = (id) => request(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
 
 const showComments = (res, e) => {
     const fragment = document.createDocumentFragment();
@@ -90,11 +81,11 @@ const callShowFunc = (e) => {
     if(number !== undefined) {
 
         try {
-            getIdPost(number)
+            getPostById(number)
                 .then((res) => showPost(res, e))
                 .catch((e) => console.log(e));
 
-            getIdComments(number)
+            getCommentsByPostId(number)
                 .then((res) => showComments(res, e))
                 .catch((e) => console.error(e));
 
