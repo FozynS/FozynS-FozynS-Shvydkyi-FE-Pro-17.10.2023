@@ -19,7 +19,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'), 
+      template: path.join(__dirname, './HomeWork45-46/index.html'), 
       filename: 'bundle_index.html',
     }),
     new CleanWebpackPlugin(),
