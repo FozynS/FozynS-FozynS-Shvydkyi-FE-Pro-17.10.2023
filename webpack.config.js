@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './HomeWork45-46/index.html'), 
-      filename:'../bundle_index.html'
+      filename:'../index.html'
     }),
 
     new CleanWebpackPlugin(),
